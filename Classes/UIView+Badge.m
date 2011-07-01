@@ -22,7 +22,7 @@ static int MLT_BADGE_TAG = 6546;
 }
 
 -(id)initWithFrame:(CGRect)frame {
-  if(self = [super initWithFrame:frame]) {
+  if((self = [super initWithFrame:frame])) {
     self.font = [UIFont boldSystemFontOfSize:13.0];
     self.badgeColor = [UIColor redColor];
     self.textColor = [UIColor whiteColor];
@@ -35,6 +35,7 @@ static int MLT_BADGE_TAG = 6546;
   }
   return self;
 }
+
 -(void)setBadgeValue:(NSInteger)value {
   if(value != 0 || self.displayWhenZero) {
     CGSize numberSize = [[NSString stringWithFormat:@"%d", value] sizeWithFont:self.font];
@@ -63,6 +64,7 @@ static int MLT_BADGE_TAG = 6546;
   badgeValue = value;
   [self setNeedsDisplay];
 }
+
 -(void)setMinimumDiameter:(float)f {
   minimumDiameter = f;
   self.bounds = CGRectMake(0, 0, f, f); 
@@ -90,7 +92,7 @@ static int MLT_BADGE_TAG = 6546;
   UIView *existingView = [self viewWithTag:MLT_BADGE_TAG];
   if(existingView) {
     if(![existingView isKindOfClass:[MLTBadgeView class]]) {
-      NSLog(@"Unexpected view of class %@ found with badge tag.");
+      NSLog(@"Unexpected view of class %@ found with badge tag.", [existingView  class]);
       return nil;
     } else {
       return (MLTBadgeView *)existingView;
